@@ -1,4 +1,5 @@
 import './App.css'
+import { Button } from './components/ui/button'
 import { decrement, increment } from './redux/features/counterSlice'
 import { useAppDispatch, useAppSelector } from './redux/hook'
 
@@ -17,10 +18,12 @@ function App() {
     <>
       <div>
         <h1 >counter with reduce</h1>
-        <button onClick={()=>handleIncrement(5)}>increment by 5</button>
-        <button onClick={()=>handleIncrement(1)}>increment</button>
+        <Button onClick={()=>handleIncrement(5)}>increment by 5</Button> 
+        <br />
+        <br />
+        <Button onClick={()=>handleIncrement(1)}>increment</Button>
         <div>{count}</div>
-        <button onClick={handleDecrement}>decrement</button> 
+        <Button onClick={handleDecrement}>decrement</Button> 
       </div>
     </>
   )
