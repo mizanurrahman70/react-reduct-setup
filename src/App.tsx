@@ -1,6 +1,8 @@
+import { DropdownMenu } from '@radix-ui/react-dropdown-menu'
 import './App.css'
 import { Button } from './components/ui/button'
-import { decrement, increment } from './redux/features/counterSlice'
+import { ModeToggle } from './components/ui/mode-toggle'
+import { decrement, increment } from './redux/features/counters/counterSlice'
 import { useAppDispatch, useAppSelector } from './redux/hook'
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <>
+       
       <div>
         <h1 >counter with reduce</h1>
         <Button onClick={()=>handleIncrement(5)}>increment by 5</Button> 
@@ -24,6 +27,7 @@ function App() {
         <Button onClick={()=>handleIncrement(1)}>increment</Button>
         <div>{count}</div>
         <Button onClick={handleDecrement}>decrement</Button> 
+        <ModeToggle></ModeToggle>
       </div>
     </>
   )

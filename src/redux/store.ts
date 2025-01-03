@@ -1,8 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-import counterReducer from './features/counterSlice';
+import counterReducer from './features/counters/counterSlice';
+import taskReducer from './features/task/taskSlice.tsx'
  export const store = configureStore({
     reducer: {
-        counter:counterReducer
+        counter:counterReducer,
+        todo:taskReducer
     }
 })     
 
