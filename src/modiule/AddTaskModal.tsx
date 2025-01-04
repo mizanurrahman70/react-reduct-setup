@@ -16,13 +16,21 @@ import { FormProvider, useForm } from "react-hook-form"
 
 import { Form } from "react-router-dom"
 import { Calendar } from "@/components/ui/calendar"
+import { useAppDispatch } from "@/redux/hook"
+import { addTask } from "@/redux/features/task/taskSlice"
+
 
 export function AddTaskModal() {
     const form = useForm({
     })
-    const onSubmit = (data: any) => {
-        console.log(data)
-    }
+    const dispatch =useAppDispatch()
+    const onSubmit = (data:any) => {
+        dispatch(addTask({
+            ...data,
+            dueDate: data.dueDate ? data.dueDate.toISOString() : null,
+        }));
+    };
+    
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -69,7 +77,7 @@ export function AddTaskModal() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Due Date </FormLabel>
-                                    <FormControl>
+                                    <FormControl className="w-full ">
                                         <Calendar
                                             mode="single"
                                             selected={field.value}
@@ -93,7 +101,7 @@ export function AddTaskModal() {
                                     <FormControl>
                                         <Select value={field.value} onValueChange={field.onChange}>
                                             <SelectTrigger className="w-[180px]">
-                                                <SelectValue placeholder="Select a fruit" />
+                                                <SelectValue placeholder="Select a Priority" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
